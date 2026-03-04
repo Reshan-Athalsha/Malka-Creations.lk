@@ -15,6 +15,8 @@ foreach ($p in $products) {
   $typeLabel = if ($p.type -eq "plant") { "Flower Plant" } else { "Creative Creation" }
   $backHref = if ($p.type -eq "plant") { "../index.html#plants" } else { "../index.html#creations" }
   $backText = if ($p.type -eq "plant") { "Back to plants" } else { "Back to creations" }
+  $breadcrumbSection = if ($p.type -eq "plant") { "Plants" } else { "Creations" }
+  $breadcrumbUrl = if ($p.type -eq "plant") { "$domain/#plants" } else { "$domain/#creations" }
   $canonUrl = "$domain/products/$($p.id).html"
   $imgUrl = "$domain/$($p.img)"
 
@@ -82,6 +84,7 @@ foreach ($p in $products) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700;800&family=Gemunu+Libre:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700;800&family=Gemunu+Libre:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  <script defer data-domain="malka-creations.lk" src="https://plausible.io/js/script.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,6 +95,17 @@ foreach ($p in $products) {
     "brand": { "@type": "Brand", "name": "$brandName" },
     "category": "$($p.category)",
     $offersJson
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "$domain/" },
+      { "@type": "ListItem", "position": 2, "name": "$breadcrumbSection", "item": "$breadcrumbUrl" },
+      { "@type": "ListItem", "position": 3, "name": "$($p.name)" }
+    ]
   }
   </script>
 </head>
@@ -122,6 +136,9 @@ foreach ($p in $products) {
       <a href="../index.html#voices">Reviews</a>
       <a href="../index.html#reach" class="nav-contact">Say Hello</a>
     </nav>
+    <button class="nav-search-btn" id="nav-search-btn" aria-label="Search products">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
     <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
       <svg class="dt-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       <svg class="dt-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -222,11 +239,34 @@ $badgeHtml
           <div class="foot-col"><h5>Help</h5><a href="../faq.html">FAQ</a><a href="../delivery.html">Delivery & Pricing</a><a href="https://wa.me/94705845678" target="_blank" rel="noopener">WhatsApp</a><a href="../index.html#reach">Contact</a></div>
         </div>
       </div>
+      <div class="foot-newsletter">
+        <div class="foot-newsletter-text">
+          <h5>Stay in the loop</h5>
+          <p>Plant care tips, new arrivals &amp; exclusive offers &mdash; straight to your inbox.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Email for newsletter" autocomplete="email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
       <div class="foot-bottom">
         <p>&copy; 2026 $brandName. Made with love in Sri Lanka.</p>
       </div>
     </div>
   </footer>
+
+  <div class="global-search-overlay" id="global-search-overlay">
+    <div class="gs-inner">
+      <div class="gs-input-wrap">
+        <svg class="gs-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="gs-input" class="gs-input" placeholder="Search plants &amp; creations&#8230;" autocomplete="off" aria-label="Search">
+        <button class="gs-close" id="gs-close" aria-label="Close search">&#10005;</button>
+      </div>
+      <div class="gs-results" id="gs-results">
+        <div class="gs-hint">Type to search plants &amp; creations&#8230;</div>
+      </div>
+    </div>
+  </div>
 
   <button class="btt" id="btt" aria-label="Back to top">&#8593;</button>
 
@@ -243,6 +283,7 @@ $badgeHtml
   </script>
   <script src="../scrollbar.js" defer></script>
   <script src="../product-features.js" defer></script>
+  <script src="../global-search.js" defer></script>
 </body>
 </html>
 "@

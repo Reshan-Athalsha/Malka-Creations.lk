@@ -85,6 +85,8 @@
     ]
   }
   </script>
+  <!-- Analytics -->
+  <script defer data-domain="malka-creations.lk" src="https://plausible.io/js/script.js"></script>
   <!-- Preload critical assets -->
   <link rel="preload" as="image" type="image/webp" href="assets/opt/logo.webp">
   <link rel="stylesheet" href="styles.css">
@@ -110,7 +112,7 @@
         <img src="assets/opt/logo.webp" alt="මල්කා මල් පැල & Creations" class="loader-logo">
         <div class="loader-ring"></div>
       </div>
-      <div class="loader-mark sinhala-hero">මල්කා මල් පැල</div>
+      <div class="loader-mark sinhala-hero" lang="si">මල්කා මල් පැල</div>
       <div class="loader-tagline">& Creations</div>
       <div class="loader-bar">
         <div class="loader-fill"></div>
@@ -119,7 +121,7 @@
   </div>
 
   <!-- Petal Canvas -->
-  <canvas id="petal-canvas"></canvas>
+  <canvas id="petal-canvas" aria-hidden="true"></canvas>
 
   <!-- Cursor -->
   <div class="cursor" id="cursor"></div>
@@ -144,7 +146,7 @@
         <div class="nav-logo-ring"></div>
       </div>
       <div class="nav-brand-text">
-        <span class="nav-name sinhala-display">මල්කා මල් පැල</span>
+        <span class="nav-name sinhala-display" lang="si">මල්කා මල් පැල</span>
         <span class="nav-sub">& Creations</span>
       </div>
     </a>
@@ -156,6 +158,9 @@
       <a href="#voices">Reviews</a>
       <a href="#reach" class="nav-contact">Say Hello</a>
     </nav>
+    <button class="nav-search-btn" id="nav-search-btn" aria-label="Search products">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
     <button class="wishlist-nav-btn" id="wishlist-nav-btn" aria-label="Wishlist">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path
@@ -1116,7 +1121,7 @@
             <div class="foot-logo-ring"></div>
           </div>
           <div class="foot-brand-text">
-            <span class="foot-name sinhala-display">මල්කා මල් පැල</span>
+            <span class="foot-name sinhala-display" lang="si">මල්කා මල් පැල</span>
             <span class="foot-eng">& Creations</span>
             <span class="foot-tagline">Plants, pots & pure creativity</span>
           </div>
@@ -1132,6 +1137,16 @@
             <h5>Help</h5><a href="faq.html">FAQ</a><a href="delivery.html">Delivery & Pricing</a><a href="https://wa.me/94705845678" target="_blank" rel="noopener">WhatsApp</a><a href="contact.html">Contact</a>
           </div>
         </div>
+      </div>
+      <div class="foot-newsletter">
+        <div class="foot-newsletter-text">
+          <h5>Stay in the loop</h5>
+          <p>Plant care tips, new arrivals & exclusive offers — straight to your inbox.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Email for newsletter" autocomplete="email">
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
       <div class="foot-bottom">
         <p>© 2026 මල්කා මල් පැල & Creations. Made with love in Sri Lanka.</p>
@@ -1165,6 +1180,20 @@
 
   <!-- Lightbox -->
   <div class="lb" id="lb" role="dialog" aria-label="Image preview"><button class="lb-close" id="lb-close" aria-label="Close image preview">×</button><img id="lb-img" src="" alt=""></div>
+
+  <!-- Global Search Overlay -->
+  <div class="global-search-overlay" id="global-search-overlay" role="dialog" aria-label="Search products">
+    <div class="gs-inner">
+      <div class="gs-input-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="gs-input" id="gs-input" type="text" placeholder="Search plants & creations..." autocomplete="off" aria-label="Search">
+        <button class="gs-close" id="gs-close" aria-label="Close search">&times;</button>
+      </div>
+      <div class="gs-results" id="gs-results">
+        <div class="gs-hint">Type to search plants & creations…</div>
+      </div>
+    </div>
+  </div>
 
   <!-- Back to top -->
   <button class="btt" id="btt" aria-label="Back to top">↑</button>

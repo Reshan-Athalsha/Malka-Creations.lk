@@ -237,7 +237,7 @@
     /* ─── PRODUCT PAGE WISHLIST ─── */
     function initProductWishlist(product) {
         const STORAGE_KEY = 'malka_wishlist';
-        let wishlist = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        let wishlist = safeParseJSON(localStorage.getItem(STORAGE_KEY), []);
 
         const actions = document.querySelector('.pd-actions');
         if (!actions) return;
@@ -253,7 +253,7 @@
         btn.style.cssText = wishlist.includes(product.id) ? 'color: #e74c3c; border-color: #e74c3c;' : '';
 
         btn.addEventListener('click', () => {
-            wishlist = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            wishlist = safeParseJSON(localStorage.getItem(STORAGE_KEY), []);
             if (wishlist.includes(product.id)) {
                 wishlist = wishlist.filter(x => x !== product.id);
                 btn.querySelector('svg').setAttribute('fill', 'none');
@@ -274,7 +274,7 @@
     /* ─── TRACK RECENTLY VIEWED ─── */
     function trackRecentlyViewed(product) {
         const RV_KEY = 'malka_recently_viewed';
-        let viewed = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+        let viewed = safeParseJSON(localStorage.getItem(RV_KEY), []);
 
         // Remove if already exists, then add to front
         viewed = viewed.filter(id => id !== product.id);
@@ -289,7 +289,7 @@
     /* ─── RECENTLY VIEWED SECTION ON PRODUCT PAGE ─── */
     function initRecentlyViewedSection(products) {
         const RV_KEY = 'malka_recently_viewed';
-        const viewed = JSON.parse(localStorage.getItem(RV_KEY) || '[]')
+        const viewed = safeParseJSON(localStorage.getItem(RV_KEY), [])
             .filter(id => id !== productId); // Exclude current product
 
         if (viewed.length === 0) return;
@@ -344,6 +344,10 @@
     }
 
     /* ─── UTILITIES ─── */
+    function safeParseJSON(str, fallback) {
+        try { return JSON.parse(str); } catch (e) { return fallback; }
+    }
+
     function shuffleArray(arr) {
         const a = [...arr];
         for (let i = a.length - 1; i > 0; i--) {

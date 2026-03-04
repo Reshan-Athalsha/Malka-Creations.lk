@@ -380,10 +380,15 @@
     updateSlider();
   }
 
+  /* ─── SAFE JSON PARSE ─── */
+  function safeParseJSON(str, fallback) {
+    try { return JSON.parse(str); } catch (e) { return fallback; }
+  }
+
   /* ─── WISHLIST ─── */
   function initWishlist() {
     const STORAGE_KEY = 'malka_wishlist';
-    let wishlist = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    let wishlist = safeParseJSON(localStorage.getItem(STORAGE_KEY), []);
 
     const countEl = document.getElementById('wishlist-count');
     const navBtn = document.getElementById('wishlist-nav-btn');
@@ -506,7 +511,7 @@
     const scroll = document.getElementById('rv-scroll');
     if (!section || !scroll) return;
 
-    const viewed = JSON.parse(localStorage.getItem(RV_KEY) || '[]');
+    const viewed = safeParseJSON(localStorage.getItem(RV_KEY), []);
     if (viewed.length === 0) return;
 
     // Find product data for viewed IDs
@@ -551,7 +556,7 @@
 
   function initWishlistForNewCards(container) {
     const STORAGE_KEY = 'malka_wishlist';
-    const wishlist = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    const wishlist = safeParseJSON(localStorage.getItem(STORAGE_KEY), []);
 
     container.querySelectorAll('.card').forEach(card => {
       const link = card.querySelector('.card-link');
@@ -571,7 +576,7 @@
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
       btn.addEventListener('click', e => {
         e.preventDefault(); e.stopPropagation();
-        let wl = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        let wl = safeParseJSON(localStorage.getItem(STORAGE_KEY), []);
         if (wl.includes(id)) { wl = wl.filter(x => x !== id); }
         else { wl.push(id); }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(wl));
@@ -815,6 +820,103 @@
     });
   }
 
+  /* ─── GLOBAL SEARCH ─── */
+  function initGlobalSearch() {
+    const btn = document.getElementById('nav-search-btn');
+    const overlay = document.getElementById('global-search-overlay');
+    const input = document.getElementById('gs-input');
+    const results = document.getElementById('gs-results');
+    const closeBtn = document.getElementById('gs-close');
+    if (!btn || !overlay || !input) return;
+
+    function open() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => input.focus(), 100);
+    }
+    function close() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      input.value = '';
+      results.innerHTML = '<div class="gs-hint">Type to search plants & creations\u2026</div>';
+    }
+
+    btn.addEventListener('click', open);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+      // Ctrl/Cmd + K to open search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); open(); }
+    });
+
+    // Determine base path for product links
+    const isSubDir = window.location.pathname.includes('/products/');
+    const linkBase = isSubDir ? '' : 'products/';
+    const imgBase = isSubDir ? '../' : '';
+
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      if (!q) {
+        results.innerHTML = '<div class="gs-hint">Type to search plants & creations\u2026</div>';
+        return;
+      }
+      const matches = productsData.filter(p => {
+        const name = (p.name || '').toLowerCase();
+        const desc = (p.desc || '').toLowerCase();
+        const cat = (p.category || '').toLowerCase();
+        return name.includes(q) || desc.includes(q) || cat.includes(q);
+      }).slice(0, 8);
+
+      if (matches.length === 0) {
+        results.innerHTML = '<div class="gs-empty">No results for &ldquo;' + q.replace(/[<>"'&]/g, '') + '&rdquo;</div>';
+        return;
+      }
+      results.innerHTML = matches.map(p => {
+        const href = linkBase + p.id + '.html';
+        return '<a class="gs-result-item" href="' + href + '">' +
+          '<img class="gs-result-img" src="' + imgBase + p.img + '" alt="' + p.name + '" loading="lazy">' +
+          '<div class="gs-result-info">' +
+            '<div class="gs-result-name">' + p.name + '</div>' +
+            '<div class="gs-result-meta"><span>' + (p.price || '') + '</span><span>' + (p.category || '') + '</span></div>' +
+          '</div></a>';
+      }).join('');
+    });
+  }
+
+  /* ─── NEWSLETTER ─── */
+  function initNewsletter() {
+    const form = document.getElementById('newsletter-form');
+    if (!form) return;
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = form.querySelector('input[type="email"]').value;
+      if (!email) return;
+      // Store subscription locally (replace with real email service in production)
+      const subs = safeParseJSON(localStorage.getItem('malka_newsletter'), []);
+      if (subs.includes(email)) {
+        showNewsletterMsg(form, 'You\'re already subscribed!', 'success');
+        return;
+      }
+      subs.push(email);
+      localStorage.setItem('malka_newsletter', JSON.stringify(subs));
+      form.reset();
+      showNewsletterMsg(form, 'Thank you! You\'re now subscribed.', 'success');
+    });
+  }
+
+  function showNewsletterMsg(form, msg, type) {
+    let el = form.parentElement.querySelector('.newsletter-msg');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'newsletter-msg';
+      form.parentElement.appendChild(el);
+    }
+    el.className = 'newsletter-msg newsletter-msg--' + type;
+    el.textContent = msg;
+    setTimeout(() => { el.textContent = ''; }, 5000);
+  }
+
   /* ─── INIT ALL ─── */
   document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
@@ -838,6 +940,7 @@
       initRecentlyViewed();
       initAutoBadges();
       initStarRatings();
+      initGlobalSearch();
     });
 
     initLoadMore();
@@ -847,6 +950,7 @@
     initContactForm();
     initCounters();
     initCookieConsent();
+    initNewsletter();
   });
 
 })();
