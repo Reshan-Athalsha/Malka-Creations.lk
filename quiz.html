@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2C1810">
+  <meta name="color-scheme" content="light">
+  <title>Plant Quiz — Which Plant Is Right for You? | Malka Creations</title>
+  <meta name="description" content="Take our quick 4-question quiz to find the perfect plant for your home. Personalized recommendations from Malka Creations, Sri Lanka.">
+  <meta property="og:title" content="Plant Quiz — Which Plant Is Right for You?">
+  <meta property="og:description" content="Answer 4 quick questions and we'll recommend the perfect plant for you.">
+  <meta property="og:image" content="https://www.malka-creations.lk/assets/opt/f1.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.malka-creations.lk/quiz.html">
+  <link rel="canonical" href="https://www.malka-creations.lk/quiz.html">
+  <link rel="icon" type="image/png" href="assets/opt/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700;800&family=Gemunu+Libre:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700;800&family=Gemunu+Libre:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet"></noscript>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <a href="https://wa.me/94705845678?text=Hi!%20I'd%20like%20help%20choosing%20a%20plant.%20Thank%20you." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.637-1.467A11.932 11.932 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.09 0-4.027-.663-5.613-1.793l-.402-.26-2.75.87.892-2.658-.284-.424A9.714 9.714 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+  </a>
+
+  <header class="nav scrolled" id="nav">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo-wrap">
+        <img src="assets/opt/logo.webp" alt="Logo" class="nav-logo-img" loading="eager">
+        <div class="nav-logo-ring"></div>
+      </div>
+      <div class="nav-brand-text">
+        <span class="nav-name sinhala-display">මල්කා මල් පැල</span>
+        <span class="nav-sub">& Creations</span>
+      </div>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#plants">Plants</a>
+      <a href="index.html#creations">Creations</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#voices">Reviews</a>
+      <a href="index.html#reach" class="nav-contact">Say Hello</a>
+    </nav>
+    <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+      <svg class="dt-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="dt-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
+  </header>
+
+  <div class="mob-menu" id="mob-menu">
+    <div class="mob-logo-wrap"><img src="assets/opt/logo.webp" alt="Malka Creations" class="mob-logo"></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#plants">Plants</a>
+      <a href="index.html#creations">Creations</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#reach">Say Hello</a>
+    </nav>
+  </div>
+
+  <main class="inner-page">
+    <div class="quiz-wrap">
+      <!-- Progress -->
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-bar"></div>
+      </div>
+
+      <!-- Step 0: Intro -->
+      <div class="quiz-step quiz-step--active" data-step="0">
+        <div class="quiz-intro">
+          <span class="ip-eyebrow">Plant Quiz</span>
+          <h1 class="quiz-title">Which plant is <em>right for you?</em></h1>
+          <p class="quiz-sub">Answer 4 quick questions and we'll recommend the perfect plant — hand-picked, potted in a uniquely decorated pot, and delivered to your door.</p>
+          <button class="btn-fill quiz-start" id="quiz-start">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8c-4 4-9.5 4-9.5 4S4 8 8 4s9 4 9 4z"/><path d="M7.5 12L12 16.5"/><path d="M12 22V8"/></svg>
+            Let's find your plant
+          </button>
+          <p class="quiz-time">Takes about 30 seconds</p>
+        </div>
+      </div>
+
+      <!-- Step 1: Experience -->
+      <div class="quiz-step" data-step="1">
+        <span class="quiz-step-num">1 of 4</span>
+        <h2 class="quiz-question">How experienced are you with plants?</h2>
+        <div class="quiz-options">
+          <button class="quiz-option" data-key="exp" data-val="beginner">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Total beginner</strong>
+              <small>I've never had a plant before</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="exp" data-val="casual">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V8"/><path d="M17 8c-4 4-9.5 4-9.5 4S4 8 8 4s9 4 9 4z"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Casual plant parent</strong>
+              <small>I have a few but nothing fancy</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="exp" data-val="experienced">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V2"/><path d="M17 8c-4 4-9.5 4-9.5 4S4 8 8 4s9 4 9 4z"/><path d="M7 14c3-3 8-3 8-3s-2 5-5 8"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Green thumb</strong>
+              <small>I love plants and want something special</small>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Light -->
+      <div class="quiz-step" data-step="2">
+        <span class="quiz-step-num">2 of 4</span>
+        <h2 class="quiz-question">How much sunlight does your space get?</h2>
+        <div class="quiz-options">
+          <button class="quiz-option" data-key="light" data-val="low">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Low light</strong>
+              <small>Mostly shade, no direct sun</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="light" data-val="medium">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" opacity=".4"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Medium light</strong>
+              <small>Bright room, indirect sunlight</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="light" data-val="high">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Lots of sun</strong>
+              <small>Direct sunlight for several hours</small>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Purpose -->
+      <div class="quiz-step" data-step="3">
+        <span class="quiz-step-num">3 of 4</span>
+        <h2 class="quiz-question">What's this plant for?</h2>
+        <div class="quiz-options">
+          <button class="quiz-option" data-key="purpose" data-val="self">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>For my home</strong>
+              <small>Brighten up my own space</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="purpose" data-val="gift">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>It's a gift</strong>
+              <small>Something special for someone</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="purpose" data-val="office">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>For my desk or office</strong>
+              <small>Something compact and clean</small>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Budget -->
+      <div class="quiz-step" data-step="4">
+        <span class="quiz-step-num">4 of 4</span>
+        <h2 class="quiz-question">What's your budget?</h2>
+        <div class="quiz-options">
+          <button class="quiz-option" data-key="budget" data-val="low">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Under Rs. 1,500</strong>
+              <small>Keep it affordable</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="budget" data-val="mid">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/><line x1="8" y1="1" x2="8" y2="3" opacity=".4"/><line x1="16" y1="21" x2="16" y2="23" opacity=".4"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Rs. 1,500 – 2,500</strong>
+              <small>Happy to spend a bit more</small>
+            </span>
+          </button>
+          <button class="quiz-option" data-key="budget" data-val="high">
+            <span class="quiz-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg></span>
+            <span class="quiz-option-text">
+              <strong>Rs. 2,500+</strong>
+              <small>I want something premium</small>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step" data-step="result">
+        <div class="quiz-result" id="quiz-result">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="foot-logo-wrap">
+            <img src="assets/opt/logo.webp" alt="Logo" class="foot-logo" loading="lazy" decoding="async">
+            <div class="foot-logo-ring"></div>
+          </div>
+          <div class="foot-brand-text">
+            <span class="foot-name sinhala-display">මල්කා මල් පැල</span>
+            <span class="foot-eng">& Creations</span>
+            <span class="foot-tagline">Plants, pots & pure creativity</span>
+          </div>
+        </div>
+        <div class="foot-cols">
+          <div class="foot-col">
+            <h5>Navigate</h5><a href="index.html">Home</a><a href="index.html#story">Story</a><a href="index.html#plants">Plants</a><a href="index.html#creations">Creations</a>
+          </div>
+          <div class="foot-col">
+            <h5>Learn</h5><a href="care-guide.html">Plant Care Guide</a><a href="blog.html">Blog</a><a href="gift-guide.html">Gift Guide</a><a href="about.html">About Us</a><a href="quiz.html">Plant Quiz</a>
+          </div>
+          <div class="foot-col">
+            <h5>Help</h5><a href="faq.html">FAQ</a><a href="delivery.html">Delivery & Pricing</a><a href="https://wa.me/94705845678" target="_blank" rel="noopener">WhatsApp</a><a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>&copy; 2026 මල්කා මල් පැල & Creations. Made with love in Sri Lanka.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="btt" id="btt" aria-label="Back to top">↑</button>
+
+  <script src="scrollbar.js" defer></script>
+  <script src="inner-pages.js" defer></script>
+  <script>
+  (function(){
+    'use strict';
+    /* ── Shared UI ── */
+    (function(){var i=new Image();i.onload=i.onerror=function(){if(i.height!==1)document.querySelectorAll('img[src$=".webp"]').forEach(function(x){x.src=x.src.replace(/\.webp$/,'.jpg')})};i.src='data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAkA4JZQCdAEO/gHOAAD++OZgAA=='})();
+    (function(){var s=localStorage.getItem('malka-theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');var t=document.getElementById('dark-toggle');if(!t)return;t.addEventListener('click',function(){var d=document.documentElement.getAttribute('data-theme')==='dark';if(d){document.documentElement.removeAttribute('data-theme');localStorage.setItem('malka-theme','light')}else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('malka-theme','dark')}})})();
+    (function(){var c=document.getElementById('cursor'),d=document.getElementById('cursor-dot');if(!c||!d)return;if(matchMedia('(pointer:coarse)').matches)return;var mx=0,my=0,cx=0,cy=0;document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});(function t(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;c.style.left=cx+'px';c.style.top=cy+'px';d.style.left=mx+'px';d.style.top=my+'px';requestAnimationFrame(t)})();document.querySelectorAll('a,button').forEach(function(e){e.addEventListener('mouseenter',function(){c.classList.add('hovering')});e.addEventListener('mouseleave',function(){c.classList.remove('hovering')})})})();
+    (function(){var t=document.getElementById('nav-toggle'),m=document.getElementById('mob-menu');if(!t||!m)return;t.addEventListener('click',function(){t.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':''});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){t.classList.remove('open');m.classList.remove('open');document.body.style.overflow=''})})})();
+    (function(){var b=document.getElementById('btt');if(!b)return;window.addEventListener('scroll',function(){b.classList.toggle('visible',window.scrollY>600)},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})})();
+
+    /* ════════════════════════════════
+       PLANT QUIZ ENGINE
+       ════════════════════════════════ */
+
+    var plants = [
+      { id:'crown-succulent',    name:'Crown Succulent',        img:'assets/opt/f10.webp', price:'Rs. 1,700', priceNum:1700, why:'Low-maintenance succulents — perfect for beginners and busy schedules. Needs minimal watering.',               tags:{ exp:['beginner','casual'], light:['medium','high'], purpose:['self','office','gift'], budget:['mid'] }},
+      { id:'wildflower',         name:'Wildflower',             img:'assets/opt/f22.webp', price:'Rs. 1,300', priceNum:1300, why:'Our most affordable, cheerful plant. Easy to care for and brightens any space instantly.',                     tags:{ exp:['beginner','casual'], light:['medium','high'], purpose:['self','gift'],          budget:['low'] }},
+      { id:'coral-succulent',    name:'Coral Succulent',        img:'assets/opt/f21.webp', price:'Rs. 1,600', priceNum:1600, why:'A hardy, ocean-themed succulent. Almost impossible to kill — ideal for first-time plant parents.',              tags:{ exp:['beginner'],           light:['medium','high'], purpose:['self','office'],        budget:['mid'] }},
+      { id:'blooming-anthurium', name:'Blooming Anthurium',     img:'assets/opt/f1.webp',  price:'Rs. 1,500', priceNum:1500, why:'Our best seller! Tropical elegance with waxy heart-shaped blooms. Thrives in indirect light.',                 tags:{ exp:['beginner','casual'], light:['low','medium'],  purpose:['self','gift'],          budget:['low','mid'] }},
+      { id:'orchid-blush',       name:'Orchid Blush',           img:'assets/opt/f3.webp',  price:'Rs. 1,200', priceNum:1200, why:'Elegant orchid in a coral pot — our most popular pairing. Orchids love bright, indirect light.',               tags:{ exp:['casual'],             light:['medium'],        purpose:['self','gift'],          budget:['low'] }},
+      { id:'cottage-rose',       name:'Cottage Rose',           img:'assets/opt/f16.webp', price:'Rs. 1,450', priceNum:1450, why:'Warm, charming cottage roses. Perfect gift or a cosy addition to kitchens and reading nooks.',                 tags:{ exp:['casual'],             light:['medium','high'], purpose:['gift','self'],          budget:['low'] }},
+      { id:'zen-bonsai',         name:'Zen Bonsai',             img:'assets/opt/f15.webp', price:'Rs. 1,900', priceNum:1900, why:'Miniature bonsai — meditative and compact. Perfect for desks and shelves.',                                   tags:{ exp:['casual','experienced'], light:['medium'],      purpose:['office','self'],        budget:['mid'] }},
+      { id:'emerald-fern',       name:'Emerald Fern',           img:'assets/opt/f11.webp', price:'Rs. 2,200', priceNum:2200, why:'Air-purifying fern in a premium emerald pot. Thrives in indirect light — great for interiors.',                tags:{ exp:['casual','experienced'], light:['low','medium'],purpose:['self','office'],        budget:['mid'] }},
+      { id:'sunset-frangipani',  name:'Sunset Frangipani',      img:'assets/opt/f7.webp',  price:'Rs. 1,400', priceNum:1400, why:'Fragrant, tropical frangipani in a sunset-gradient pot. A best seller for a reason.',                         tags:{ exp:['casual'],             light:['high'],          purpose:['self','gift'],          budget:['low'] }},
+      { id:'tropical-palm',      name:'Tropical Palm',          img:'assets/opt/f13.webp', price:'Rs. 1,650', priceNum:1650, why:'Lush tropical palm that brings resort vibes home. Easy to care for and visually striking.',                    tags:{ exp:['beginner','casual'], light:['medium','high'], purpose:['self'],                 budget:['mid'] }},
+      { id:'sky-bloom',          name:'Sky Bloom',              img:'assets/opt/f19.webp', price:'Rs. 1,850', priceNum:1850, why:'Cheerful blooms in an earth-and-sky pot. Uplifting, joyful energy for any room.',                              tags:{ exp:['casual'],             light:['medium','high'], purpose:['self','gift'],          budget:['mid'] }},
+      { id:'blush-chrysanthemum',name:'Blush Chrysanthemum',    img:'assets/opt/f9.webp',  price:'Rs. 1,350', priceNum:1350, why:'Soft pink chrysanthemums — romantic and affordable. A lovely treat or gift.',                                  tags:{ exp:['beginner','casual'], light:['medium'],        purpose:['gift','self'],          budget:['low'] }},
+      { id:'jasmine-dream',      name:'Jasmine Dream',          img:'assets/opt/f4.webp',  price:'Rs. 2,200', priceNum:2200, why:'Fragrant jasmine that fills your room with tranquillity. Premium craftsmanship.',                             tags:{ exp:['experienced'],        light:['medium','high'], purpose:['self','gift'],          budget:['mid'] }},
+      { id:'moonlit-lily',       name:'Moonlit Lily',           img:'assets/opt/f18.webp', price:'Rs. 1,750', priceNum:1750, why:'Elegant lily with a pearlescent moonlight pot. Creates a serene atmosphere.',                                 tags:{ exp:['casual','experienced'], light:['low','medium'],purpose:['self','gift'],          budget:['mid'] }},
+      { id:'rose-garden-planter',name:'Rose Garden Planter',    img:'assets/opt/f2.webp',  price:'Rs. 1,800', priceNum:1800, why:'Miniature rose bush in a botanical pot. Romantic and perfect for windowsills.',                                tags:{ exp:['casual'],             light:['medium','high'], purpose:['gift','self'],          budget:['mid'] }},
+      { id:'heritage-hibiscus',  name:'Heritage Hibiscus',      img:'assets/opt/f5.webp',  price:'Rs. 2,500', priceNum:2500, why:'Vibrant hibiscus in a pot with traditional Sri Lankan Kandyan motifs. A cultural statement.',                  tags:{ exp:['experienced'],        light:['high'],          purpose:['self','gift'],          budget:['mid','high'] }},
+      { id:'moon-jasmine',       name:'Moon Jasmine',           img:'assets/opt/f17.webp', price:'Rs. 2,600', priceNum:2600, why:'Night-blooming jasmine in a bronze pot. Heavenly fragrance in the evenings.',                                  tags:{ exp:['experienced'],        light:['medium','high'], purpose:['self'],                 budget:['high'] }},
+      { id:'saffron-dahlia',     name:'Saffron Dahlia',         img:'assets/opt/f20.webp', price:'Rs. 2,400', priceNum:2400, why:'Rich dahlia in a mandala-painted saffron pot. Dignified, elegant, and eye-catching.',                         tags:{ exp:['experienced'],        light:['medium','high'], purpose:['gift','self'],          budget:['mid','high'] }},
+      { id:'golden-orchid',      name:'Golden Orchid',          img:'assets/opt/f14.webp', price:'Rs. 3,200', priceNum:3200, why:'Our most exclusive orchid. Real gold-leaf pot and luxury gift packaging. The ultimate statement.',             tags:{ exp:['experienced'],        light:['medium'],        purpose:['gift'],                 budget:['high'] }},
+      { id:'royal-heritage-planter',name:'Royal Heritage Planter',img:'assets/opt/f23.webp',price:'Rs. 3,500',priceNum:3500, why:'Our absolute masterwork. Gold-finished royal pot with Sri Lankan heritage patterns.',                         tags:{ exp:['experienced'],        light:['medium','high'], purpose:['gift','self'],          budget:['high'] }},
+      { id:'royal-marigold',     name:'Royal Marigold',         img:'assets/opt/f8.webp',  price:'Rs. 2,800', priceNum:2800, why:'Bright marigolds with mandala and gold-leaf — prosperity and good fortune in one pot.',                       tags:{ exp:['casual','experienced'],light:['high'],          purpose:['gift','self'],          budget:['high'] }},
+      { id:'spring-garden',      name:'Spring Garden',          img:'assets/opt/f6.webp',  price:'Rs. 1,600', priceNum:1600, why:'Lush spring greenery in a nature planter — birds, butterflies, and blooms. Great for patios.',                 tags:{ exp:['beginner','casual'], light:['medium','high'], purpose:['self'],                 budget:['mid'] }}
+    ];
+
+    var answers = {};
+    var currentStep = 0;
+    var totalSteps = 4;
+    var steps = document.querySelectorAll('.quiz-step');
+    var bar = document.getElementById('quiz-bar');
+    var startBtn = document.getElementById('quiz-start');
+
+    function showStep(n) {
+      steps.forEach(function(s) { s.classList.remove('quiz-step--active','quiz-step--exit'); });
+      var current = document.querySelector('[data-step="' + currentStep + '"]');
+      if (current) current.classList.add('quiz-step--exit');
+      var target = (n === 'result') ? document.querySelector('[data-step="result"]') : document.querySelector('[data-step="' + n + '"]');
+      setTimeout(function() {
+        if (current) current.classList.remove('quiz-step--exit');
+        target.classList.add('quiz-step--active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+      currentStep = n;
+      if (typeof n === 'number') {
+        bar.style.width = Math.round((n / totalSteps) * 100) + '%';
+      } else {
+        bar.style.width = '100%';
+      }
+    }
+
+    startBtn.addEventListener('click', function() { showStep(1); });
+
+    document.querySelectorAll('.quiz-option').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var key = btn.getAttribute('data-key');
+        var val = btn.getAttribute('data-val');
+        answers[key] = val;
+        // Highlight
+        btn.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('quiz-option--selected'); });
+        btn.classList.add('quiz-option--selected');
+        // Next step
+        var next = (typeof currentStep === 'number') ? currentStep + 1 : currentStep;
+        setTimeout(function() {
+          if (next > totalSteps) {
+            showResult();
+          } else {
+            showStep(next);
+          }
+        }, 400);
+      });
+    });
+
+    function scoreProducts() {
+      return plants.map(function(p) {
+        var score = 0;
+        ['exp','light','purpose','budget'].forEach(function(key) {
+          if (answers[key] && p.tags[key] && p.tags[key].indexOf(answers[key]) !== -1) {
+            score += 1;
+          }
+        });
+        // Bonus for exact budget match
+        if (answers.budget === 'low' && p.priceNum <= 1500) score += 0.5;
+        if (answers.budget === 'mid' && p.priceNum > 1500 && p.priceNum <= 2500) score += 0.5;
+        if (answers.budget === 'high' && p.priceNum >= 2500) score += 0.5;
+        return { plant: p, score: score };
+      }).sort(function(a, b) { return b.score - a.score; });
+    }
+
+    function showResult() {
+      var scored = scoreProducts();
+      var best = scored[0].plant;
+      var runner = scored[1].plant;
+      var waText = encodeURIComponent('Hi! The Plant Quiz recommended the ' + best.name + ' (' + best.price + ') for me. I\'d like to order it. Thank you!');
+      var html = '' +
+        '<div class="quiz-result-inner">' +
+          '<span class="ip-eyebrow">Your perfect match</span>' +
+          '<h2 class="quiz-result-name">' + best.name + '</h2>' +
+          '<div class="quiz-result-card">' +
+            '<div class="quiz-result-img"><img src="' + best.img + '" alt="' + best.name + '" loading="eager"></div>' +
+            '<div class="quiz-result-info">' +
+              '<p class="quiz-result-why">' + best.why + '</p>' +
+              '<div class="quiz-result-price">' + best.price + '</div>' +
+              '<div class="quiz-result-actions">' +
+                '<a href="https://wa.me/94705845678?text=' + waText + '" target="_blank" rel="noopener" class="btn-wa btn-wa-lg">' +
+                  '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>' +
+                  ' Order via WhatsApp' +
+                '</a>' +
+                '<a href="products/' + best.id + '.html" class="btn-ghost">View details</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="quiz-runner">' +
+            '<p class="quiz-runner-label">Also a great match for you</p>' +
+            '<a href="products/' + runner.id + '.html" class="quiz-runner-card">' +
+              '<img src="' + runner.img + '" alt="' + runner.name + '" loading="lazy">' +
+              '<div>' +
+                '<strong>' + runner.name + '</strong>' +
+                '<span>' + runner.price + '</span>' +
+              '</div>' +
+            '</a>' +
+          '</div>' +
+          '<button class="btn-ghost quiz-retake" id="quiz-retake">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>' +
+            ' Retake quiz' +
+          '</button>' +
+        '</div>';
+      document.getElementById('quiz-result').innerHTML = html;
+      showStep('result');
+      document.getElementById('quiz-retake').addEventListener('click', function() {
+        answers = {};
+        document.querySelectorAll('.quiz-option--selected').forEach(function(o){ o.classList.remove('quiz-option--selected'); });
+        showStep(0);
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
