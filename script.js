@@ -1070,6 +1070,130 @@
     setTimeout(() => { el.textContent = ''; }, 5000);
   }
 
+  /* ─── PARALLAX SCROLL ─── */
+  function initParallax() {
+    const layers = document.querySelectorAll('.hero-dots, .hero-leaf-outline');
+    if (!layers.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          layers.forEach(layer => {
+            const speed = parseFloat(layer.dataset.speed || 0.3);
+            layer.style.transform = 'translateY(' + (y * speed) + 'px)';
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ─── STAGGERED CARD REVEAL ─── */
+  function initStaggeredReveal() {
+    const grids = document.querySelectorAll('.plant-grid, .creations-grid');
+    if (!grids.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.card');
+          cards.forEach((card, i) => {
+            card.style.transitionDelay = (i * 0.08) + 's';
+            card.classList.add('visible');
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+    grids.forEach(g => obs.observe(g));
+  }
+
+  /* ─── HORIZONTAL TESTIMONIAL CAROUSEL ─── */
+  function initTestimonialCarousel() {
+    const carousel = document.getElementById('voiceCarousel');
+    const prev = document.getElementById('voicePrev');
+    const next = document.getElementById('voiceNext');
+    const dotsWrap = document.getElementById('voiceDots');
+    if (!carousel || !prev || !next || !dotsWrap) return;
+
+    const cards = carousel.querySelectorAll('.voice-card');
+    const total = cards.length;
+
+    // Build dots
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'voice-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => scrollToCard(i));
+      dotsWrap.appendChild(dot);
+    }
+    const dots = dotsWrap.querySelectorAll('.voice-dot');
+
+    function updateDots() {
+      const scrollLeft = carousel.scrollLeft;
+      const cardWidth = cards[0].offsetWidth + 24; // gap
+      const idx = Math.round(scrollLeft / cardWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    function scrollToCard(i) {
+      const cardWidth = cards[0].offsetWidth + 24;
+      carousel.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+    }
+
+    prev.addEventListener('click', () => {
+      const cardWidth = cards[0].offsetWidth + 24;
+      carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', () => {
+      const cardWidth = cards[0].offsetWidth + 24;
+      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    carousel.addEventListener('scroll', () => updateDots(), { passive: true });
+
+    // Touch / drag support
+    let isDown = false, startX, scrollLeft;
+    carousel.addEventListener('mousedown', e => {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+    carousel.addEventListener('mouseleave', () => { isDown = false; });
+    carousel.addEventListener('mouseup', () => { isDown = false; });
+    carousel.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      carousel.scrollLeft = scrollLeft - (x - startX);
+    });
+  }
+
+  /* ─── TIKTOK TOAST ─── */
+  function initTikTokToast() {
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('.tiktok-placeholder');
+      if (!link) return;
+      e.preventDefault();
+      // Show toast
+      let toast = document.getElementById('tiktok-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'tiktok-toast';
+        toast.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--stone,#1B2E20);color:#fff;padding:14px 28px;border-radius:100px;font-size:14px;font-weight:600;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.2);';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = '\uD83C\uDFB5 TikTok page coming soon!';
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
+      }, 3000);
+    });
+  }
+
   /* ─── INIT ALL ─── */
   document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
@@ -1081,6 +1205,10 @@
     initMobileMenu();
     initReveal();
     initHeartBounce();
+    initParallax();
+    initStaggeredReveal();
+    initTestimonialCarousel();
+    initTikTokToast();
 
     // Load products data, then init features that depend on it
     loadProductsData().then(() => {
